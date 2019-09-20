@@ -48,10 +48,9 @@ Example to install ROS desktop-full flavor with rosbridge-server on the host sys
        ros_user:
            name: rarrais
            group: rarrais
-       flavor:
-           - desktop-full
+       ros_configuration: desktop-full
        ros_packages:
-           - rosbridge-server
+         - rosbridge-server
      roles:
        - rarrais.ros
    ```
