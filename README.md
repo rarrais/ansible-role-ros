@@ -14,16 +14,20 @@ Role Variables
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
    ```yaml
-    ros_user:             # Default username and group for catkin_ws installation
-        name: ubuntu       
-        group: ubuntu
+   ros_keyserver: hkp://keyserver.ubuntu.com:80              # Retrieved from ROS Installation instructions
+   ros_key_id: C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654      # Retrieved from ROS Installation instructions
+   ros_repository_url: http://packages.ros.org/ros/ubuntu    # Retrieved from ROS Installation instructions
 
-    catkin_ws: catkin_ws  # catkin_ws directory
+   ros_user:                     # Default username and group for catkin_ws installation
+       name: ubuntu
+       group: ubuntu
 
-    distro: melodic       # melodic OR kinetic (automatically discoverable according to Ubuntu version)
-    flavor: ros-base      # desktop-full OR desktop OR ros-base
+   catkin_ws: catkin_ws          # catkin_ws directory
 
-    ros_packages:         # List of ROS packages to be installed without ros-<distro> prefix (see example)
+   ros_distribution: melodic     # melodic OR kinetic (automatically discoverable according to Ubuntu version)
+   ros_configuration: ros-base   # desktop-full OR desktop OR ros-base
+
+   ros_packages:                 # List of ROS packages to be installed without ros-<distro> prefix
    ```
 
 Dependencies

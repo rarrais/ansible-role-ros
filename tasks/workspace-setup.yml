@@ -9,7 +9,7 @@
     group: "{{ ros_user.group }}"
 
 - name: Build catkin workspace
-  shell: source /opt/ros/{{ distro }}/setup.bash && catkin_make
+  shell: source /opt/ros/{{ ros_distribution }}/setup.bash && catkin_make
   args:
     chdir: /home/{{ ros_user.name }}/{{ catkin_ws }}
     executable: /bin/bash

@@ -1,13 +1,17 @@
 ---
 # defaults file for ros
 
-ros_user:             # Default username and group for catkin_ws installation
+ros_keyserver: hkp://keyserver.ubuntu.com:80              # Retrieved from ROS Installation instructions
+ros_key_id: C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654      # Retrieved from ROS Installation instructions
+ros_repository_url: http://packages.ros.org/ros/ubuntu    # Retrieved from ROS Installation instructions
+
+ros_user:                     # Default username and group for catkin_ws installation
     name: ubuntu
     group: ubuntu
 
-catkin_ws: catkin_ws  # catkin_ws directory
+catkin_ws: catkin_ws          # catkin_ws directory
 
-distro: melodic       # melodic OR kinetic (automatically discoverable according to Ubuntu version)
-flavor: ros-base      # desktop-full OR desktop OR ros-base
+ros_distribution: melodic     # melodic OR kinetic (automatically discoverable according to Ubuntu version)
+ros_configuration: ros-base   # desktop-full OR desktop OR ros-base
 
-ros_packages:         # List of ROS packages to be installed without ros-<distro> prefix
+ros_packages:                 # List of ROS packages to be installed without ros-<distro> prefix

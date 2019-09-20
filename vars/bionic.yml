@@ -1,4 +1,4 @@
 ---
 # var file for ROS Melodic
 
-distro: melodic
+ros_distribution: melodic

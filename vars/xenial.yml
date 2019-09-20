@@ -1,4 +1,4 @@
 ---
 # var file for ROS Kinetic
 
-distro: kinetic
+ros_distribution: kinetic

@@ -1,32 +1,26 @@
 ---
 # ROS install task
 
-- name: Handles correct ROS distro according to the Ubuntu distribution version.
+- name: Handles correct ROS distribution according to the Ubuntu version.
   include_vars: "{{ ansible_distribution_release }}.yml"
 
-# TODO: keyserver & id should be variables
 - name: Setup ROS keys
   apt_key:
-    keyserver: hkp://keyserver.ubuntu.com:80
-    id: C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+    keyserver: {{ ros_keyserver }}
+    id: {{ ros_key_id }}
 
-# TODO: repo address should be a variable
-# TODO: Fails sometimes... Always works on second attempt...
 - name: Setup sources.list
   apt_repository:
-    repo: deb http://packages.ros.org/ros/ubuntu {{ ansible_distribution_release }} main
+    repo: deb {{ ros_repository_url }} {{ ansible_distribution_release }} main
     state: present
     filename: ros-latest
-    validate_certs: no # TODO: Is this needed?
-
 
 - name: Install ROS
   apt:
     name: "{{ packages }}"
-    allow_unauthenticated: yes
     update_cache: yes
   vars:
-    packages: "{{ 'ros-' + distro + '-' + flavor }}"
+    packages: "{{ 'ros-' + ros_distribution + '-' + ros_configuration }}"
 
 - name: Initialize rosdep
   shell: rosdep init
@@ -42,15 +36,14 @@
   become: yes
   become_user: "{{ ros_user.name }}"
 
-- name: Update .bashrc with /opt/ros/<distro>/setup.bash
+- name: Update .bashrc with /opt/ros/<ros_distribution>/setup.bash
   lineinfile:
     path: /home/{{ ros_user.name }}/.bashrc
-    line: source /opt/ros/{{ distro }}/setup.bash
+    line: source /opt/ros/{{ ros_distribution }}/setup.bash
 
 - name: Install dependencies for building packages
   apt:
     name: "{{ packages }}"
-    allow_unauthenticated: yes
   vars:
     packages:
     - python-rosinstall
