@@ -1,0 +1,13 @@
+---
+# defaults file for ros
+
+defaultuser:
+    name: ubuntu
+    group: ubuntu
+
+catkin_ws: ros_ws
+
+distro: melodic
+flavor: ros-base
+
+ros_packages:

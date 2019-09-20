@@ -1,0 +1,23 @@
+---
+# Worskspace setup task
+
+- name: Create a ROS workspace
+  file:
+    dest: "/home/{{defaultuser.name}}/{{catkin_ws}}/src"
+    state: directory
+    owner: "{{defaultuser.name}}"
+    group: "{{defaultuser.group}}"
+
+- name: Build catkin workspace
+  shell: source /opt/ros/{{distro}}/setup.bash && catkin_make
+  become: yes
+  become_user: "{{defaultuser.name}}"
+  args:
+    chdir: /home/{{defaultuser.name}}/{{catkin_ws}}
+    executable: /bin/bash
+    creates: devel/setup.bash
+
+- name: Update .bashrc with ~/{{catkin_ws}}/devel/setup.bash
+  lineinfile:
+    path: /home/{{defaultuser.name}}/.bashrc
+    line: source /home/{{defaultuser.name}}/{{catkin_ws}}/devel/setup.bash

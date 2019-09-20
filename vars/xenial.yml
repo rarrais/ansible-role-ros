@@ -1,0 +1,5 @@
+---
+# var file for ROS Kinetic
+
+distro: kinetic
+flavor: ros-base

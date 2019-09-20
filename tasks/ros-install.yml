@@ -1,0 +1,53 @@
+---
+# ROS install task
+
+- name: Handles correct ROS distro according to the Ubuntu distribution version.
+  include_vars: "{{ ansible_distribution_release }}.yml"
+
+- name: Setup sources.list
+  apt_repository:
+    repo: deb http://packages.ros.org/ros/ubuntu {{ ansible_distribution_release }} main
+    state: present
+    validate_certs: no
+
+- name: Setup ROS keys
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+- name: Run the equivalent of "apt-get update"
+  apt:
+    update_cache: yes
+
+- name: Install ROS
+  apt:
+    name: "{{ packages }}"
+    allow_unauthenticated: yes
+  vars:
+    packages: "{{ 'ros-' + distro + '-' + flavor }}"
+
+- name: Initialize rosdep
+  shell: rosdep init
+  args:
+    creates: /etc/ros/rosdep/sources.list.d/20-default.list
+
+- name: Update rosdep
+  shell: rosdep update
+  become: yes
+  become_user: "{{defaultuser.name}}"
+
+- name: Update .bashrc with /opt/ros/<distro>/setup.bash
+  lineinfile:
+    path: /home/{{defaultuser.name}}/.bashrc
+    line: source /opt/ros/{{distro}}/setup.bash
+
+- name: Install dependencies for building packages
+  apt:
+    name: "{{ packages }}"
+    allow_unauthenticated: yes
+  vars:
+    packages:
+    - python-rosinstall
+    - python-rosinstall-generator
+    - python-wstool
+    - build-essential
