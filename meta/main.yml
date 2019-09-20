@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: ros
+  role_name: ROS
   author: rarrais
   description: An Ansible Role that installs ROS (Robot Operating System) on Ubuntu
   company: INESC TEC

@@ -34,11 +34,11 @@
 - name: Update rosdep
   shell: rosdep update
   become: yes
-  become_user: "{{defaultuser.name}}"
+  become_user: "{{ros_user.name}}"
 
 - name: Update .bashrc with /opt/ros/<distro>/setup.bash
   lineinfile:
-    path: /home/{{defaultuser.name}}/.bashrc
+    path: /home/{{ros_user.name}}/.bashrc
     line: source /opt/ros/{{distro}}/setup.bash
 
 - name: Install dependencies for building packages
