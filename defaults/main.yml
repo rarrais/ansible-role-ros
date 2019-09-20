@@ -1,13 +1,13 @@
 ---
 # defaults file for ros
 
-ros_user:
+ros_user:             # Default username and group for catkin_ws installation
     name: ubuntu
     group: ubuntu
 
-catkin_ws: ros_ws
+catkin_ws: catkin_ws  # catkin_ws directory
 
-distro: melodic
-flavor: ros-base
+distro: melodic       # melodic OR kinetic (automatically discoverable according to Ubuntu version)
+flavor: ros-base      # desktop-full OR desktop OR ros-base
 
-ros_packages:
+ros_packages:         # List of ROS packages to be installed without ros-<distro> prefix

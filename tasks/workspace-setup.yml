@@ -3,21 +3,21 @@
 
 - name: Create a ROS workspace
   file:
-    dest: "/home/{{ros_user.name}}/{{catkin_ws}}/src"
+    dest: "/home/{{ ros_user.name }}/{{ catkin_ws }}/src"
     state: directory
-    owner: "{{ros_user.name}}"
-    group: "{{ros_user.group}}"
+    owner: "{{ ros_user.name }}"
+    group: "{{ ros_user.group }}"
 
 - name: Build catkin workspace
-  shell: source /opt/ros/{{distro}}/setup.bash && catkin_make
+  shell: source /opt/ros/{{ distro }}/setup.bash && catkin_make
   become: yes
-  become_user: "{{ros_user.name}}"
+  become_user: "{{ ros_user.name }}"
   args:
-    chdir: /home/{{ros_user.name}}/{{catkin_ws}}
+    chdir: /home/{{ ros_user.name }}/{{ catkin_ws }}
     executable: /bin/bash
     creates: devel/setup.bash
 
-- name: Update .bashrc with ~/{{catkin_ws}}/devel/setup.bash
+- name: Update .bashrc with ~/{{ catkin_ws }}/devel/setup.bash
   lineinfile:
-    path: /home/{{ros_user.name}}/.bashrc
-    line: source /home/{{ros_user.name}}/{{catkin_ws}}/devel/setup.bash
+    path: /home/{{ ros_user.name }}/.bashrc
+    line: source /home/{{ ros_user.name }}/{{ catkin_ws }}/devel/setup.bash

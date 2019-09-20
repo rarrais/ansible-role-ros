@@ -7,5 +7,5 @@
     allow_unauthenticated: yes
   vars:
     packages: "{{ 'ros-' + distro + '-' + item }}"
-  with_items: "{{ros_packages}}"
+  with_items: "{{ ros_packages }}"
   when: (ros_packages is defined) and (ros_packages is not none)

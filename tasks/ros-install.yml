@@ -26,20 +26,22 @@
   vars:
     packages: "{{ 'ros-' + distro + '-' + flavor }}"
 
-- name: Initialize rosdep
-  shell: rosdep init
+- name: Initialize and updates rosdep
+  shell: rosdep init && rosdep update
   args:
     creates: /etc/ros/rosdep/sources.list.d/20-default.list
-
-- name: Update rosdep
-  shell: rosdep update
   become: yes
-  become_user: "{{ros_user.name}}"
+  become_user: "{{ ros_user.name }}"
+
+# - name: Update rosdep
+#   shell: rosdep update
+#   become: yes
+#   become_user: "{{ros_user.name}}"
 
 - name: Update .bashrc with /opt/ros/<distro>/setup.bash
   lineinfile:
-    path: /home/{{ros_user.name}}/.bashrc
-    line: source /opt/ros/{{distro}}/setup.bash
+    path: /home/{{ ros_user.name }}/.bashrc
+    line: source /opt/ros/{{ distro }}/setup.bash
 
 - name: Install dependencies for building packages
   apt:
