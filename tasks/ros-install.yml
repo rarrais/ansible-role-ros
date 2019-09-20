@@ -4,6 +4,7 @@
 - name: Handles correct ROS distro according to the Ubuntu distribution version.
   include_vars: "{{ ansible_distribution_release }}.yml"
 
+# TODO: Fails sometimes... Always works on second attempt...
 - name: Setup sources.list
   apt_repository:
     repo: deb http://packages.ros.org/ros/ubuntu {{ ansible_distribution_release }} main
@@ -26,17 +27,17 @@
   vars:
     packages: "{{ 'ros-' + distro + '-' + flavor }}"
 
-- name: Initialize and updates rosdep
-  shell: rosdep init && rosdep update
+- name: Initialize rosdep
+  shell: rosdep init
   args:
     creates: /etc/ros/rosdep/sources.list.d/20-default.list
+
+- name: Update rosdep
+  shell: rosdep update
+  args:
+    creates: /home/{{ ros_user.name }}/.ros/rosdep/sources.cache
   become: yes
   become_user: "{{ ros_user.name }}"
-
-# - name: Update rosdep
-#   shell: rosdep update
-#   become: yes
-#   become_user: "{{ros_user.name}}"
 
 - name: Update .bashrc with /opt/ros/<distro>/setup.bash
   lineinfile:
