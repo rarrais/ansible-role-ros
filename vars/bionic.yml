@@ -2,4 +2,3 @@
 # var file for ROS Melodic
 
 distro: melodic
-flavor: ros-base
