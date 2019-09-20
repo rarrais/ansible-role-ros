@@ -10,12 +10,12 @@
 
 - name: Build catkin workspace
   shell: source /opt/ros/{{ distro }}/setup.bash && catkin_make
-  become: yes
-  become_user: "{{ ros_user.name }}"
   args:
     chdir: /home/{{ ros_user.name }}/{{ catkin_ws }}
     executable: /bin/bash
     creates: devel/setup.bash
+  become: yes
+  become_user: "{{ ros_user.name }}"
 
 - name: Update .bashrc with ~/{{ catkin_ws }}/devel/setup.bash
   lineinfile:
