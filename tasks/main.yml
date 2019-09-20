@@ -1,10 +1,6 @@
 ---
 # Main task
 
-- name: Configure base-os
-  include: base-os.yml
-  tags: baseos
-
 - name: Install ROS
   include: ros-install.yml
   tags: ros-install

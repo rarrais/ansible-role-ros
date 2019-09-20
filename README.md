@@ -11,7 +11,7 @@ None.
 Role Variables
 --------------
 
-Available variables are listed below, along with default values (see 'defaults/main.yml'):
+Available variables are listed below, along with default values (see `defaults/main.yml`):
 
    ```yaml
     ros_user:             # Default username and group for catkin_ws installation

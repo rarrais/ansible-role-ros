@@ -1,8 +1,0 @@
----
-# Base OS task
-
-- name: Ensure OS is up to date
-  apt:
-    update_cache: yes
-    upgrade: full
-    cache_valid_time: 300
