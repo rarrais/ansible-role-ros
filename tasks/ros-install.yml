@@ -4,6 +4,11 @@
 - name: Handles correct ROS distro according to the Ubuntu distribution version.
   include_vars: "{{ ansible_distribution_release }}.yml"
 
+- name: Setup ROS keys
+  apt_key:
+    keyserver: hkp://keyserver.ubuntu.com:80
+    id: C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
 # TODO: Fails sometimes... Always works on second attempt...
 - name: Setup sources.list
   apt_repository:
@@ -11,11 +16,6 @@
     state: present
     filename: ros-latest
     validate_certs: no
-
-- name: Setup ROS keys
-  apt_key:
-    keyserver: hkp://keyserver.ubuntu.com:80
-    id: C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
 - name: Run the equivalent of "apt-get update"
   apt:
