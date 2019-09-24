@@ -10,6 +10,7 @@ RUN apt-add-repository -y ppa:ansible/ansible && apt-get update && apt-get insta
 RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
 RUN groupadd ubuntu
-RUN useradd -m -d /home/ubuntu -s /bin/bash -g root -G sudo, ubuntu -u 1000 ubuntu
+RUN useradd -m -d /home/ubuntu -s /bin/bash -g root -G ubuntu -u 1000 ubuntu
+RUN usermod -a -G ubuntu ubuntu
 
 ENTRYPOINT ["/bin/systemd"]
