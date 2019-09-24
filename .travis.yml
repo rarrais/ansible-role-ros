@@ -1,6 +1,9 @@
 ---
-# Following https://blog.travis-ci.com/2017-11-30-testing-ansible-roles-using-docker-on-travis
+# Adapted from https://blog.travis-ci.com/2017-11-30-testing-ansible-roles-using-docker-on-travis
+
 sudo: required
+
+language: generic
 
 env:
   - distribution: ubuntu
