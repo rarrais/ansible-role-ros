@@ -11,5 +11,4 @@ RUN echo "[local]\nlocalhost ansible_connection=local" > /etc/ansible/hosts
 
 RUN useradd -m -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 ubuntu
 
-
 ENTRYPOINT ["/sbin/init"]
