@@ -1,6 +1,8 @@
 Robot Operating System (ROS)
 =========
 
+[![Build Status](https://travis-ci.org/rarrais/ansible-role-ros.svg?branch=master)](https://travis-ci.org/rarrais/ansible-role-ros)
+
 An Ansible Role that installs ROS (Robot Operating System) on Ubuntu.
 
 Requirements
