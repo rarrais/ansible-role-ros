@@ -28,7 +28,7 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
-  - 'sudo docker exec "$(cat ${container_id})" -u ubuntu which roscore'
+  - 'sudo docker exec "$(cat ${container_id})" which roscore'
   - 'sudo docker rm -f "$(cat ${container_id})"'
 
 
