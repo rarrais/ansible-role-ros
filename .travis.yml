@@ -5,13 +5,6 @@ sudo: required
 
 language: generic
 
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-    - os: osx
-      osx_image: xcode7.2
-
 env:
   - distribution: ubuntu
     version: bionic
@@ -40,8 +33,12 @@ script:
     || (echo 'Idempotence test: fail' && exit 1)
   - >
     sudo docker exec "$(cat ${container_id})" bin/bash -c '[ -f /opt/ros/melodic/setup.bash ]'
-    && (echo 'setup.bash exists under /opt/ros/melodic')
-    || (echo 'setup.bash not found under /opt/ros/melodic')
+    && (echo 'setup.bash exists under /opt/ros/melodic/')
+    || (echo 'setup.bash not found under /opt/ros/melodic/')
+  - >
+    sudo docker exec "$(cat ${container_id})" bin/bash -c '[ -f /home/ubuntu/devel/setup.bash ]'
+    && (echo 'setup.bash exists under /home/ubuntu/devel/')
+    || (echo 'setup.bash not found under /home/ubuntu/devel/')
   - 'sudo docker rm -f "$(cat ${container_id})"'
 
 
