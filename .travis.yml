@@ -8,8 +8,10 @@ language: generic
 env:
   - distribution: ubuntu
     version: bionic
+    user: ubuntu
   - distribution: ubuntu
     version: xenial
+    user: ubuntu
 
 services:
   - docker
@@ -28,7 +30,9 @@ script:
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
-  - 'sudo docker exec "$(cat ${container_id})" source /home/ubuntu/.bashrc && which roscore'
+  - 'sudo docker exec -it -u ubuntu "$(cat ${container_id})" bin/bash'
+  - 'which roscore'
+  - 'exit'
   - 'sudo docker rm -f "$(cat ${container_id})"'
 
 
