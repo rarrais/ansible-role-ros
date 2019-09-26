@@ -1,5 +1,9 @@
 ---
 - hosts: localhost
   remote_user: root
+  vars:
+    ros_user:
+        name: travis
+        group: travis
   roles:
     - ansible-role-ros
