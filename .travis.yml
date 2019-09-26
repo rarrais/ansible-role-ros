@@ -45,10 +45,9 @@
 # notifications:
 #   webhooks: https://galaxy.ansible.com/api/v1/notifications/
 
-language: generic
 
-# Use the new container infrastructure
-sudo: required
+language: python
+python: "2.7"
 
 matrix:
   include:
@@ -57,6 +56,9 @@ matrix:
     - os: linux
       dist: bionic
 
+# Use the new container infrastructure
+sudo: false
+
 # Install ansible
 addons:
   apt:
@@ -64,7 +66,6 @@ addons:
     - python-pip
 
 install:
-
   # Install ansible
   - pip install ansible
 
@@ -77,13 +78,6 @@ install:
 script:
   # Basic role syntax check
   - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-
-  # Attempts to install the role
-  - ansible-playbook tests/test.yml -i tests/inventory
-
-  # Checks roscore
-
-  # Checks compilation
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
