@@ -3,7 +3,7 @@ Robot Operating System (ROS)
 
 [![Build Status](https://travis-ci.org/rarrais/ansible-role-ros.svg?branch=master)](https://travis-ci.org/rarrais/ansible-role-ros)
 
-An Ansible Role that installs ROS (Robot Operating System) on Ubuntu.
+An Ansible Role that installs ROS (Robot Operating System) on Ubuntu. 🤖
 
 Requirements
 ------------
@@ -40,7 +40,7 @@ None.
 Example Playbook
 ----------------
 
-Example to install ROS desktop-full flavor with rosbridge-server on the host system with a custom (existing) username:
+Example to install ROS desktop-full configuration with rosbridge-server on the host system with a custom (existing) username:
 
    ```yaml
    - hosts: localhost
