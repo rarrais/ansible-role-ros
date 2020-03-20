@@ -22,6 +22,11 @@
   vars:
     packages: "{{ 'ros-' + ros_distribution + '-' + ros_configuration }}"
 
+- name: Install python-rosdep 
+  apt:
+    name: python-rosdep
+    update_cache: yes
+
 - name: Initialize rosdep
   command: rosdep init
   args:
