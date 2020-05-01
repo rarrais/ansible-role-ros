@@ -2,14 +2,14 @@
 # Adapted from https://blog.travis-ci.com/2017-11-30-testing-ansible-roles-using-docker-on-travis
 
 language: generic
-# sudo: required
+sudo: required
 
 env:
   global: 
-    - DISTRIBUTION: 'ubuntu'
+    - DISTRIBUTION="ubuntu"
   matrix: 
-    - VERSION: 'bionic'   ROS_DISTRO: 'melodic'
-    - VERSION: 'xenial'   ROS_DISTRO: 'kinetic'
+    - VERSION="bionic"  ROS_DISTRO="melodic"
+    - VERSION="xenial"  ROS_DISTRO="kinetic"
 
 services:
   - docker
