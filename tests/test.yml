@@ -4,7 +4,7 @@
   vars:
     ros_workspaces: 
       catkin_ws: catkin_make
-      ros_ws: caktin_tools
+      ros_ws: catkin_tools
       colcon_ws: colcon
   roles:
     - ansible-role-ros
