@@ -53,3 +53,5 @@
     - python-rosinstall-generator
     - python-wstool
     - build-essential
+    - python-catkin-tools
+    - python3-colcon-common-extensions

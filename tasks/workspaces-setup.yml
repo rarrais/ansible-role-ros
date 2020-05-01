@@ -1,0 +1,30 @@
+---
+# Worskspaces setup task
+
+- name: Create a ROS workspaces
+  file:
+    dest: "/home/{{ ros_user.name }}/{{ item.ros_ws }}/src"
+    state: directory
+    owner: "{{ ros_user.name }}"
+    group: "{{ ros_user.group }}"
+  loop: "{{ ros_workspaces | dict2items(key_name='ros_ws', value_name='ros_builder') }}"
+
+- name: Build ROS workspaces
+  shell: | 
+    source /opt/ros/{{ ros_distribution }}/setup.bash && 
+    {{ 'catkin_make' if item.ros_builder == 'catkin_make' 
+    else 'catkin build' if item.ros_builder == 'catkin_tools' 
+    else 'colcon build' if item.ros_builder == 'colcon' }}
+  args:
+    chdir: /home/{{ ros_user.name }}/{{ item.ros_ws }}
+    executable: /bin/bash
+    creates: "{{ 'install/setup.bash' if item.ros_builder == 'colcon' else 'devel/setup.bash' }}"
+  become: yes
+  become_user: "{{ ros_user.name }}"
+  loop: "{{ ros_workspaces | dict2items(key_name='ros_ws', value_name='ros_builder') }}"
+
+- name: Update .bashrc with ~/{{ item.ros_ws }}/<devel/install>/setup.bash
+  lineinfile:
+    path: /home/{{ ros_user.name }}/.bashrc
+    line: source /home/{{ ros_user.name }}/{{ item.ros_ws }}/{{ 'install' if item.ros_builder == 'colcon' else 'devel' }}/setup.bash
+  loop: "{{ ros_workspaces | dict2items(key_name='ros_ws', value_name='ros_builder') }}"

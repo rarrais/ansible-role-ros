@@ -5,9 +5,9 @@
   include: ros-install.yml
   tags: ros-install
 
-- name: Workspace Setup
-  include: workspace-setup.yml
-  tags: workspace-setup
+- name: Workspaces Setup
+  include: workspaces-setup.yml
+  tags: workspaces-setup
 
 - name: ROS Packages Install
   include: ros-packages-install.yml

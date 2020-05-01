@@ -1,5 +1,10 @@
 ---
 - hosts: localhost
   remote_user: root
+  vars:
+    ros_workspaces: 
+      catkin_ws: catkin_make
+      ros_ws: caktin_tools
+      colcon_ws: colcon
   roles:
     - ansible-role-ros
