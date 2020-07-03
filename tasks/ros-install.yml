@@ -24,7 +24,7 @@
 
 - name: Install python-rosdep 
   apt:
-    name: python-rosdep
+    name: "python{{ python_version_suffix }}-rosdep"
     update_cache: yes
 
 - name: Initialize rosdep
@@ -49,13 +49,17 @@
     name: "{{ packages }}"
   vars:
     packages:
-    - python-rosinstall
-    - python-rosinstall-generator
-    - python-wstool
-    - build-essential
-    - python-catkin-tools
+    - "python{{ python_version_suffix }}-rosinstall"
+    - "python{{ python_version_suffix }}-rosinstall-generator"
+    - "python{{ python_version_suffix }}-wstool"
+    - "build-essential"
+    - "python{{ python_version_suffix }}-catkin-tools"
     - python3-colcon-common-extensions
-    - python3-pip 
+
+- name: Install Python 3 PIP
+  apt:
+    name: python3-pip
+  when: install_pip
 
 - name: Install Colcon Bundle
   pip:

@@ -5,7 +5,7 @@ ros_keyserver: hkp://keyserver.ubuntu.com:80              # Retrieved from ROS I
 ros_key_id: C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654      # Retrieved from ROS Installation instructions
 ros_repository_url: http://packages.ros.org/ros/ubuntu    # Retrieved from ROS Installation instructions
 
-ros_distribution: melodic     # melodic OR kinetic (automatically discoverable according to Ubuntu version)
+ros_distribution: noetic      # melodic OR kinetic OR noetic (automatically discoverable according to Ubuntu version)
 ros_configuration: ros-base   # desktop-full OR desktop OR ros-base
 
 ros_user:                     # Default username and group for ROS workspace installation
@@ -18,3 +18,5 @@ ros_workspaces:               # ROS workspaces directories and builders definiti
     # colcon_ws: colcon
 
 ros_packages:                 # List of ROS packages to be installed without ros-<distro> prefix
+
+install_pip: yes              # Perform system PIP install
