@@ -2,3 +2,4 @@
 # var file for ROS Melodic
 
 ros_distribution: melodic
+python_version_suffix: ""

@@ -2,3 +2,4 @@
 # var file for ROS Kinetic
 
 ros_distribution: kinetic
+python_version_suffix: ""

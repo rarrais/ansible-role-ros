@@ -2,3 +2,4 @@
 # var file for ROS Noetic
 
 ros_distribution: noetic
+python_version_suffix: 3
