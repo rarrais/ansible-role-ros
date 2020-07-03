@@ -18,3 +18,5 @@ ros_workspaces:               # ROS workspaces directories and builders definiti
     # colcon_ws: colcon
 
 ros_packages:                 # List of ROS packages to be installed without ros-<distro> prefix
+
+install_pip: yes              # Perform system PIP install
