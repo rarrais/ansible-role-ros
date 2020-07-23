@@ -8,6 +8,7 @@ env:
   global: 
     - DISTRIBUTION="ubuntu"
   matrix: 
+    - VERSION="focal"   ROS_DISTRO="noetic"
     - VERSION="bionic"  ROS_DISTRO="melodic"
     - VERSION="xenial"  ROS_DISTRO="kinetic"
 
