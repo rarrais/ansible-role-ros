@@ -1,0 +1,4 @@
+---
+# var file for ROS Noetic
+
+ros_distribution: noetic

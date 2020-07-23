@@ -20,7 +20,7 @@ Available variables are listed below, along with default values (see `defaults/m
     ros_key_id: C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654      # Retrieved from ROS Installation instructions
     ros_repository_url: http://packages.ros.org/ros/ubuntu    # Retrieved from ROS Installation instructions
 
-    ros_distribution: melodic     # melodic OR kinetic (automatically discoverable according to Ubuntu version)
+    ros_distribution: noetic     # noetic OR melodic OR kinetic (automatically discoverable according to Ubuntu version)
     ros_configuration: ros-base   # desktop-full OR desktop OR ros-base
 
     ros_user:                     # Default username and group for ROS workspace installation
