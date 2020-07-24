@@ -14,7 +14,7 @@ env:
 
 jobs:
   allow_failures: # https://github.com/ansible/ansible/issues/68645
-    - env: DISTRIBUTION="ubuntu" VERSION="focal" ROS_DISTRO="noetic"
+    - env: DISTRIBUTION="ubuntu"   VERSION="focal"   ROS_DISTRO="noetic"
 
 services:
   - docker
