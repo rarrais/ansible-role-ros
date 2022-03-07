@@ -6,8 +6,8 @@
 
 - name: Setup ROS keys
   apt_key:
-    keyserver: "{{ ros_keyserver }}"
-    id: "{{ ros_key_id }}"
+    state: present
+    url: "{{ ros_keyserver }}"
 
 - name: Setup sources.list
   apt_repository:
